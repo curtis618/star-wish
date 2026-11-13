@@ -1,0 +1,35 @@
+<!doctype html>
+<!--
+  頁面模板（一般內容頁，不含 3D）。新增頁面時：
+  1. 複製這個檔案到專案根目錄，改名為 <page-id>.html（kebab-case）
+  2. 替換所有 {{...}}
+  3. 建立 js/pages/<page-id>.js，第一行呼叫 renderNav('<page-id>')
+  4. 要出現在導覽列的話，在 js/ui/nav.js 的 NAV 加一筆
+  需要 3D 的頁面：改用 index.html 的 <head>（含 importmap）與 .stage 結構。
+-->
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>{{頁面標題}}｜星願</title>
+  <meta name="description" content="{{一句話描述}}" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Space+Grotesk:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body class="starry">
+  <main class="page">
+    <header class="page-head">
+      <div class="eyebrow">{{英文小標}}</div>
+      <h1>{{頁面標題}}</h1>
+      <p>{{導言}}</p>
+    </header>
+
+    <!-- 內容 -->
+  </main>
+  <script type="module" src="js/pages/{{page-id}}.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+# 本機設定（Claude Code 伺服器設定等）
+.claude/
+
+# 系統檔
+.DS_Store
+Thumbs.db
+desktop.ini

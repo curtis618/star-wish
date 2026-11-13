@@ -1,0 +1,21 @@
+Copyright (c) 2026 curtis618. All rights reserved.
+
+本專案（「星願 Star Wish」）的原始碼、文件、設計、圖示與其他內容，
+著作權均歸作者所有，保留一切權利。
+
+本 repository 公開僅供瀏覽與課程評閱之用。未經作者事先書面授權，
+任何人不得對本專案的全部或一部分進行重製、修改、散布、公開展示、
+再授權、販售，或用於商業或非商業的衍生作品。
+
+公開於 GitHub 不代表授予任何授權。依 GitHub 服務條款，其他使用者
+可在 GitHub 平台上檢視與 fork 本 repository，但不因此取得上述任何權利。
+
+如需授權，請透過 GitHub（https://github.com/curtis618）聯絡作者。
+
+----------------------------------------------------------------------
+第三方素材（不屬於上述保留範圍，依各自授權條款使用）：
+
+- 地球貼圖：NASA Visible Earth — Blue Marble、Earth at Night（公有領域），
+  經 three-globe 範例圖片取得後重新壓縮。
+- Three.js r160（MIT License），執行時由 jsDelivr CDN 載入，未包含在本 repository 內。
+- Noto Sans TC、Space Grotesk 字型（SIL Open Font License 1.1），由 Google Fonts 載入。

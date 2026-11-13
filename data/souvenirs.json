@@ -1,0 +1,50 @@
+[
+  {
+    "id": "wish-bottle",
+    "name": "許願瓶",
+    "icon": "wish-bottle.svg",
+    "story": "把一整片星空的願望，封進小小的玻璃瓶。"
+  },
+  {
+    "id": "paper-crane",
+    "name": "紙鶴",
+    "icon": "paper-crane.svg",
+    "story": "折了九百九十九隻，最後一隻帶去太空。"
+  },
+  {
+    "id": "photo",
+    "name": "拍立得",
+    "icon": "photo.svg",
+    "story": "一張只有我們懂的合照，在軌道上慢慢旋轉。"
+  },
+  {
+    "id": "ring",
+    "name": "約定之戒",
+    "icon": "ring.svg",
+    "story": "繞地球一圈只要九十分鐘，約定卻是一輩子。"
+  },
+  {
+    "id": "seed",
+    "name": "一顆種子",
+    "icon": "seed.svg",
+    "story": "等它回到地面，就種在我們第一次見面的地方。"
+  },
+  {
+    "id": "letter",
+    "name": "寫給未來的信",
+    "icon": "letter.svg",
+    "story": "收件地址：五年後的自己，經由低地球軌道。"
+  },
+  {
+    "id": "guitar-pick",
+    "name": "吉他彈片",
+    "icon": "guitar-pick.svg",
+    "story": "那首還沒寫完的歌，先讓它在太空練習。"
+  },
+  {
+    "id": "plush-cat",
+    "name": "貓咪玩偶",
+    "icon": "plush-cat.svg",
+    "story": "牠說想看看地球的另一面，有沒有更多罐頭。"
+  }
+]

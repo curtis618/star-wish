@@ -1,0 +1,75 @@
+/* 放入星願頁（launch.html）專用樣式 */
+.launch-layout { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+.viewer { position: sticky; top: calc(var(--header-h) + 16px); height: min(76vh, 640px); overflow: hidden; padding: 0; }
+.viewer canvas { width: 100%; height: 100%; display: block; touch-action: none; }
+.viewer-cap { position: absolute; left: 18px; bottom: 16px; font-size: 14px; pointer-events: none; }
+.viewer-hint { position: absolute; right: 16px; top: 14px; font-size: 12px; pointer-events: none; }
+
+.stepper { list-style: none; padding: 0; margin: 0 0 22px; display: flex; gap: 6px; }
+.stepper li { flex: 1; display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--muted); padding: 8px 10px; border-radius: 999px; border: 1px solid var(--line); }
+.stepper li i { font-style: normal; font-family: var(--font-num); width: 22px; height: 22px; display: grid; place-items: center; border-radius: 50%; background: rgba(255, 255, 255, 0.06); font-size: 12px; }
+.stepper li.active { color: var(--ink); border-color: var(--gold); }
+.stepper li.active i { background: var(--gold); color: #1b1200; }
+.stepper li.done i { background: rgba(255, 204, 102, 0.25); color: var(--gold); }
+
+.step { animation: step-in var(--t) var(--ease); }
+@keyframes step-in { from { opacity: 0; transform: translateY(8px); } }
+.step h2 { margin-bottom: 4px; }
+.step-actions { display: flex; justify-content: space-between; gap: 10px; margin-top: 24px; }
+.step-actions.wrap { flex-wrap: wrap; justify-content: flex-start; }
+
+/* 紀念品 */
+.souvenir-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(124px, 1fr)); gap: 12px; margin: 16px 0 20px; }
+.souvenir { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; padding: 14px 10px; }
+.souvenir .sv-img { width: 64px; height: 64px; display: grid; place-items: center; color: var(--blue); }
+.souvenir .sv-img img { width: 64px; height: 64px; object-fit: contain; border-radius: 8px; }
+.souvenir b { font-size: 15px; }
+.souvenir small { font-size: 12px; color: var(--muted); line-height: 1.45; }
+.souvenir.upload { border-style: dashed; }
+.souvenir.upload.has-image .sv-img img { object-fit: cover; }
+
+.field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.field label { font-size: 14px; color: var(--ink-2); display: flex; justify-content: space-between; }
+.field textarea, .field input {
+  background: rgba(255, 255, 255, 0.04); border: 1px solid var(--line-strong); border-radius: var(--r-sm);
+  padding: 10px 12px; resize: vertical; transition: border-color var(--t-fast);
+}
+.field textarea:focus, .field input:focus { outline: none; border-color: var(--gold); }
+
+/* 衛星清單 */
+.sat-list { display: grid; gap: 10px; margin-top: 14px; }
+.sat-card { display: grid; grid-template-columns: auto 1fr auto; gap: 4px 14px; align-items: center; padding: 14px 16px; text-align: left; width: 100%; font: inherit; color: inherit; }
+.sat-card:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+.sat-type { font-family: var(--font-num); font-weight: 600; font-size: 15px; width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; border: 1px solid currentColor; grid-row: span 2; }
+.sat-card .sc-name { font-weight: 700; }
+.sat-card .sc-sub { font-size: 13px; color: var(--muted); }
+.sat-card .sc-right { text-align: right; grid-row: span 2; }
+.sat-card .sc-cd { font-family: var(--font-num); font-size: 18px; font-weight: 600; }
+.seat-bar { width: 84px; height: 4px; background: var(--line); border-radius: 4px; overflow: hidden; margin-left: auto; margin-top: 4px; }
+.seat-bar i { display: block; height: 100%; background: var(--blue); }
+
+/* 格子 */
+.cell-grid { display: grid; gap: 8px; margin-top: 10px; max-width: 360px; }
+.cell { aspect-ratio: 1; border-radius: 10px; border: 1px solid var(--line-strong); background: rgba(255, 255, 255, 0.03); cursor: pointer; font-family: var(--font-num); color: var(--muted); transition: transform var(--t-fast) var(--ease), border-color var(--t-fast), background var(--t-fast); }
+.cell:hover:not(:disabled) { border-color: var(--gold); transform: scale(1.04); }
+.cell.other { background: rgba(127, 208, 255, 0.18); border-color: rgba(127, 208, 255, 0.4); cursor: not-allowed; }
+.cell.mine { background: rgba(255, 204, 102, 0.3); border-color: var(--gold); color: var(--gold); cursor: not-allowed; }
+.cell.selected { background: var(--gold); color: #1b1200; border-color: var(--gold); box-shadow: 0 0 18px rgba(255, 204, 102, 0.5); }
+.cell-legend { display: flex; gap: 14px; font-size: 13px; margin-top: 10px; }
+.cl { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; border: 1px solid var(--line-strong); }
+.cl-other { background: rgba(127, 208, 255, 0.35); }
+.cl-mine { background: var(--gold); }
+
+/* 確認 */
+.summary { display: grid; grid-template-columns: 96px 1fr; gap: 16px; align-items: center; }
+.summary img { width: 96px; height: 96px; object-fit: cover; border-radius: 12px; background: var(--bg-2); }
+.summary .wish { font-size: 17px; color: var(--ink); margin: 0 0 6px; }
+.summary dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; font-size: 14px; }
+.summary dt { color: var(--muted); }
+.summary dd { margin: 0; }
+
+@media (max-width: 860px) {
+  .launch-layout { grid-template-columns: 1fr; gap: 18px; }
+  .viewer { position: relative; top: 0; height: 300px; }
+  .stepper li { font-size: 13px; padding: 6px 8px; }
+}

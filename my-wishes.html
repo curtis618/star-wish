@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>我的星願｜星願</title>
+  <meta name="description" content="你放進衛星的每一份心意，都在這裡。" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Space+Grotesk:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <style>
+    .wish-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; }
+    .wish-grid { display: grid; gap: var(--gap); grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+    .wish-card { display: flex; flex-direction: column; gap: 12px; }
+    .wc-top { display: flex; gap: 14px; align-items: center; }
+    .wc-top img { width: 72px; height: 72px; border-radius: 12px; object-fit: cover; background: var(--bg-2); flex: none; }
+    .wc-text { color: var(--ink); margin: 0; font-size: 16px; }
+    .wc-sign { font-size: 13px; color: var(--muted); }
+    .wc-sat { font-size: 14px; display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; }
+    .wc-live { font-size: 13px; color: var(--ink-2); min-height: 1.6em; }
+    .wc-actions { display: flex; gap: 8px; margin-top: auto; }
+    .wc-actions .btn:first-child { flex: 1; }
+    .btn-danger-confirm { border-color: var(--danger); color: var(--danger); }
+    .add-card { display: grid; place-items: center; text-align: center; min-height: 220px; border-style: dashed; color: var(--ink-2); }
+    .add-card b { font-size: 40px; color: var(--gold); line-height: 1; display: block; }
+  </style>
+</head>
+<body class="starry">
+  <main class="page">
+    <header class="page-head wish-head">
+      <div>
+        <div class="eyebrow">MY WISHES</div>
+        <h1>我的星願</h1>
+        <p id="wish-summary">你放進衛星的每一份心意，都在這裡。</p>
+      </div>
+      <a class="btn btn-primary" href="launch.html">＋ 放入新的星願</a>
+    </header>
+    <section class="wish-grid" id="wish-grid" aria-live="polite"></section>
+  </main>
+  <script type="module" src="js/pages/my-wishes.js"></script>
+</body>
+</html>

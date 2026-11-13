@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>星願 Star Wish</title>
+  <meta name="description" content="每 30 分鐘，一顆立方衛星帶著大家的星願飛向太空。" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Space+Grotesk:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <script type="importmap">
+    { "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    } }
+  </script>
+</head>
+<body>
+  <div class="stage"><canvas id="scene" aria-label="3D 地球與在軌的星願衛星"></canvas></div>
+
+  <div class="loader" id="loader">
+    <div class="loader-inner">正在對準軌道…<div class="loader-bar"><i id="loader-bar"></i></div></div>
+  </div>
+
+  <div class="hud hud-top-right">
+    <div class="legend glass" aria-label="圖例">
+      <span><i class="dot dot-mine"></i>我的星願</span>
+      <span><i class="dot dot-new"></i>剛發射</span>
+      <span><i class="dot dot-other"></i>其他星願</span>
+    </div>
+  </div>
+
+  <div class="hud hud-bottom-left">
+    <section class="glass hud-card" aria-live="polite">
+      <div class="hud-label">下一班發射</div>
+      <div class="hud-big" id="countdown">--:--</div>
+      <div style="margin-top:8px">
+        <b id="next-name">—</b>
+        <span class="num muted" id="next-id"></span>
+      </div>
+      <div class="muted" style="font-size:14px" id="next-meta"></div>
+      <div class="hud-row">
+        <div class="hud-stat"><b id="stat-orbit">0</b><span>在軌星願衛星</span></div>
+        <div class="hud-stat"><b id="stat-mine" class="gold">0</b><span>我的星願</span></div>
+      </div>
+      <a class="btn btn-primary" href="launch.html" style="margin-top:16px;width:100%">＋ 放入新的星願</a>
+      <div class="hud-actions">
+        <button class="btn btn-sm" id="replay" type="button">▶ 重播上一班發射</button>
+        <a class="btn btn-sm" href="my-wishes.html">追蹤我的星願</a>
+      </div>
+    </section>
+  </div>
+
+  <script type="module" src="js/pages/index.js"></script>
+</body>
+</html>

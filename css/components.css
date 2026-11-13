@@ -1,0 +1,127 @@
+/* ============ 玻璃面板 ============ */
+.glass {
+  background: var(--glass);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+/* 低階裝置關掉模糊（很吃 GPU） */
+.lite .glass { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--glass-strong); }
+
+/* ============ 按鈕 ============ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 12px 22px; border-radius: 999px; border: 1px solid var(--line-strong);
+  background: rgba(255, 255, 255, 0.04); color: var(--ink); cursor: pointer;
+  font-weight: 500; letter-spacing: 0.04em; white-space: nowrap;
+  transition: transform var(--t-fast) var(--ease), background var(--t-fast), border-color var(--t-fast), box-shadow var(--t);
+}
+.btn:hover { background: rgba(255, 255, 255, 0.09); border-color: var(--blue); color: var(--ink); }
+.btn:active { transform: scale(0.97); }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold), #ff9f5a); color: #1b1200; border: none; font-weight: 700;
+  box-shadow: 0 0 0 0 rgba(255, 204, 102, 0.5), 0 8px 26px rgba(255, 170, 80, 0.3);
+}
+.btn-primary:hover { color: #1b1200; background: linear-gradient(135deg, var(--gold-2), #ffb070); box-shadow: 0 0 0 6px rgba(255, 204, 102, 0.12), 0 10px 30px rgba(255, 170, 80, 0.4); }
+.btn-sm { padding: 7px 14px; font-size: 14px; }
+
+/* ============ HUD ============ */
+.hud { position: fixed; z-index: 10; pointer-events: none; }
+.hud > * { pointer-events: auto; }
+.hud-bottom-left { left: var(--gutter); bottom: var(--gutter); max-width: min(420px, calc(100vw - 2 * var(--gutter))); }
+.hud-top-right { right: var(--gutter); top: calc(var(--header-h) + 8px); }
+.hud-card { padding: 20px 22px; }
+.hud-label { font-size: 12px; letter-spacing: 0.22em; color: var(--muted); text-transform: uppercase; }
+.hud-big { font-family: var(--font-num); font-size: clamp(40px, 8vw, 60px); line-height: 1; font-weight: 600; letter-spacing: 0.02em; color: var(--ink); }
+.hud-row { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 12px; }
+.hud-stat { display: flex; flex-direction: column; }
+.hud-stat b { font-family: var(--font-num); font-size: 20px; font-weight: 600; }
+.hud-stat span { font-size: 12px; color: var(--muted); }
+
+.legend { display: flex; gap: 14px; font-size: 13px; color: var(--ink-2); padding: 10px 14px; }
+.dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; margin-right: 6px; vertical-align: 1px; box-shadow: 0 0 8px currentColor; }
+.dot-mine { background: var(--gold); color: var(--gold); }
+.dot-other { background: var(--blue); color: var(--blue); }
+.dot-new { background: #fff; color: #fff; }
+
+/* ============ 徽章 ============ */
+.badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line-strong); color: var(--ink-2); }
+.badge-live { color: var(--ok); border-color: rgba(126, 240, 194, 0.4); }
+.badge-live::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--ok); animation: pulse 1.6s infinite; }
+.badge-wait { color: var(--gold); border-color: rgba(255, 204, 102, 0.4); }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+
+/* ============ 卡片 ============ */
+.card { padding: 18px; border-radius: var(--r); background: rgba(255, 255, 255, 0.03); border: 1px solid var(--line); transition: border-color var(--t-fast), transform var(--t-fast) var(--ease), background var(--t-fast); }
+.card:hover { border-color: var(--line-strong); }
+.card.selectable { cursor: pointer; }
+.card.selectable:hover { transform: translateY(-2px); background: rgba(255, 255, 255, 0.05); }
+.card[aria-pressed='true'], .card.selected { border-color: var(--gold); background: rgba(255, 204, 102, 0.07); box-shadow: 0 0 0 1px var(--gold) inset; }
+.grid-cards { display: grid; gap: var(--gap); grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+
+/* ============ 衛星資訊浮卡（首頁點衛星） ============ */
+.sat-pop { position: fixed; z-index: 20; min-width: 220px; padding: 14px 16px; transform: translate(-50%, calc(-100% - 16px)); animation: pop var(--t) var(--ease); }
+.sat-pop h4 { margin: 0 0 2px; font-size: 16px; }
+.sat-pop .num { font-size: 13px; color: var(--muted); }
+.sat-pop .close { position: absolute; top: 6px; right: 8px; background: none; border: none; color: var(--muted); cursor: pointer; font-size: 18px; }
+@keyframes pop { from { opacity: 0; transform: translate(-50%, calc(-100% - 6px)); } }
+
+/* ============ 載入 ============ */
+.loader { position: fixed; inset: 0; z-index: 40; display: grid; place-items: center; background: var(--bg); transition: opacity 600ms var(--ease); }
+.loader.done { opacity: 0; pointer-events: none; }
+.loader-inner { text-align: center; color: var(--muted); font-size: 13px; letter-spacing: 0.2em; }
+.loader-bar { width: 160px; height: 2px; background: var(--line); margin: 14px auto 0; border-radius: 2px; overflow: hidden; }
+.loader-bar i { display: block; height: 100%; width: 0; background: var(--gold); transition: width var(--t) var(--ease); }
+
+/* ============ Toast ============ */
+.toast { position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%); z-index: 60; padding: 12px 18px; border-radius: 999px; background: var(--glass-strong); border: 1px solid var(--line-strong); font-size: 14px; animation: pop var(--t) var(--ease); }
+
+/* ============ 佔位頁 ============ */
+.placeholder { text-align: center; padding: 80px 0; }
+.placeholder svg { width: 72px; height: 72px; margin: 0 auto 20px; opacity: 0.85; }
+
+/* ============ 發射動畫覆蓋層 ============ */
+.launch-overlay { position: fixed; inset: 0; z-index: 70; pointer-events: none; opacity: 0; transition: opacity 500ms var(--ease); }
+.launch-overlay.on { opacity: 1; }
+.launch-overlay .lo-skip { pointer-events: auto; position: absolute; right: var(--gutter); top: calc(9vh + 12px); }
+.lo-bar { position: absolute; left: 0; right: 0; height: 9vh; background: #000; transform: scaleY(0); transition: transform 600ms var(--ease); }
+.lo-top { top: 0; transform-origin: top; }
+.lo-bottom { bottom: 0; transform-origin: bottom; }
+.launch-overlay.on .lo-bar { transform: scaleY(1); }
+.lo-info { position: absolute; top: calc(9vh + 16px); left: var(--gutter); right: calc(var(--gutter) + 90px); display: flex; flex-direction: column; gap: 6px; }
+.lo-head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-size: 15px; color: var(--ink); }
+.lo-head .num { color: var(--muted); font-size: 13px; }
+.lo-site { font-size: 13px; color: var(--gold); letter-spacing: 0.1em; }
+.lo-count { position: absolute; left: 50%; top: 42%; transform: translate(-50%, -50%); font-size: clamp(96px, 22vw, 220px); font-weight: 600; color: #fff; text-shadow: 0 0 40px rgba(255, 204, 102, 0.6); line-height: 1; }
+.lo-count.tick { animation: lo-tick 900ms var(--ease); }
+@keyframes lo-tick { from { transform: translate(-50%, -50%) scale(1.35); opacity: 0.2; } 30% { opacity: 1; } to { transform: translate(-50%, -50%) scale(1); opacity: 0.85; } }
+.lo-msg { position: absolute; left: 50%; top: 30%; transform: translate(-50%, 8px); font-size: clamp(22px, 4vw, 34px); color: var(--ink); text-align: center; opacity: 0; transition: opacity var(--t) var(--ease), transform var(--t) var(--ease); text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8); white-space: nowrap; }
+.lo-msg.show { opacity: 1; transform: translate(-50%, 0); }
+
+.lo-msg b { color: var(--gold); }
+.lo-tele { position: absolute; left: var(--gutter); right: var(--gutter); bottom: calc(9vh + 14px); display: flex; gap: clamp(14px, 3vw, 32px); flex-wrap: wrap; }
+.lo-tele div { display: flex; flex-direction: column; }
+.lo-tele span { font-family: var(--font); font-size: 11px; color: var(--muted); letter-spacing: 0.18em; }
+.lo-tele b { font-size: clamp(16px, 2.4vw, 22px); font-weight: 600; color: var(--ink); }
+.hud-actions { display: flex; gap: 8px; margin-top: 10px; }
+.hud-actions .btn { flex: 1; }
+/* 發射動畫期間隱藏頁面 HUD 與頁首 */
+body.launching .hud, body.launching .site-header, body.launching .sat-pop { opacity: 0; pointer-events: none; transition: opacity 400ms var(--ease); }
+.hud, .site-header { transition: opacity 400ms var(--ease); }
+
+/* 發射覆蓋層：手機版（放在最後，才能覆蓋上面的基本樣式） */
+@media (max-width: 720px) {
+  .lo-bar { height: 6vh; }
+  .lo-info { top: calc(6vh + 12px); }
+  .launch-overlay .lo-skip { top: calc(6vh + 10px); }
+  .lo-head { font-size: 14px; }
+  .lo-head .num { flex-basis: 100%; order: 10; }
+  .lo-site { font-size: 12px; letter-spacing: 0.04em; }
+  .lo-msg { white-space: normal; width: calc(100% - 2 * var(--gutter)); font-size: 22px; top: 32%; }
+  .lo-count { top: 46%; }
+  .lo-tele { bottom: calc(6vh + 12px); display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; }
+  .lo-tele b { font-size: 17px; }
+}

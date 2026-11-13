@@ -1,0 +1,121 @@
+/* ============ 設計 token（顏色只能從這裡取，不要在別處寫死色碼） ============ */
+:root {
+  --bg: #03050c;
+  --bg-2: #0a1022;
+  --ink: #e9eefc;
+  --ink-2: #b8c2de;
+  --muted: #7f8aa8;
+  --gold: #ffcc66;
+  --gold-2: #ffe2a3;
+  --blue: #7fd0ff;
+  --violet: #c79bff;
+  --danger: #ff7a8a;
+  --ok: #7ef0c2;
+  --glass: rgba(12, 18, 38, 0.58);
+  --glass-strong: rgba(12, 18, 38, 0.82);
+  --line: rgba(150, 180, 255, 0.16);
+  --line-strong: rgba(150, 180, 255, 0.32);
+
+  --font: 'Noto Sans TC', system-ui, -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  --font-num: 'Space Grotesk', 'Noto Sans TC', ui-monospace, monospace;
+
+  --r-sm: 8px;
+  --r: 14px;
+  --r-lg: 22px;
+  --gap: 16px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --header-h: 60px;
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --t-fast: 160ms;
+  --t: 320ms;
+
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+/* 沒有 3D 的頁面用 CSS 星空當背景（零成本） */
+body.starry {
+  background:
+    radial-gradient(1px 1px at 12% 22%, #fff9 50%, transparent 51%),
+    radial-gradient(1px 1px at 72% 12%, #fff8 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 38% 68%, #ffe8b0aa 50%, transparent 51%),
+    radial-gradient(1px 1px at 86% 54%, #fff7 50%, transparent 51%),
+    radial-gradient(1px 1px at 22% 86%, #cfe6ff88 50%, transparent 51%),
+    radial-gradient(1px 1px at 58% 38%, #fff6 50%, transparent 51%),
+    radial-gradient(1200px 700px at 80% -10%, #16224a 0%, transparent 60%),
+    radial-gradient(900px 600px at -10% 110%, #1a1440 0%, transparent 60%),
+    var(--bg);
+  background-attachment: fixed;
+}
+
+a { color: var(--blue); text-decoration: none; }
+a:hover { color: var(--gold-2); }
+img, svg { max-width: 100%; display: block; }
+button, input, textarea, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 6px; }
+
+h1, h2, h3 { line-height: 1.25; margin: 0 0 0.5em; letter-spacing: 0.02em; }
+h1 { font-size: clamp(28px, 5vw, 44px); }
+h2 { font-size: clamp(22px, 3.2vw, 30px); }
+h3 { font-size: 18px; }
+p { margin: 0 0 1em; color: var(--ink-2); }
+.num { font-family: var(--font-num); font-variant-numeric: tabular-nums; letter-spacing: 0.02em; }
+.muted { color: var(--muted); }
+.gold { color: var(--gold); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ============ 版型 ============ */
+.page { padding: calc(var(--header-h) + 24px) var(--gutter) 64px; max-width: 1180px; margin: 0 auto; }
+.page-head { margin-bottom: 28px; }
+.page-head .eyebrow { color: var(--gold); font-size: 13px; letter-spacing: 0.24em; text-transform: uppercase; margin-bottom: 6px; }
+
+/* 全螢幕 3D 頁面 */
+.stage { position: fixed; inset: 0; }
+.stage canvas { width: 100%; height: 100%; display: block; touch-action: none; }
+
+/* ============ 頁首導覽 ============ */
+.site-header {
+  position: fixed; inset: 0 0 auto 0; z-index: 50; height: var(--header-h);
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 0 var(--gutter);
+  background: linear-gradient(to bottom, rgba(3, 5, 12, 0.85), rgba(3, 5, 12, 0));
+}
+.brand { display: flex; align-items: center; gap: 10px; color: var(--ink); font-weight: 700; letter-spacing: 0.12em; white-space: nowrap; }
+.brand svg { width: 26px; height: 26px; }
+.brand small { font-family: var(--font-num); font-weight: 400; color: var(--muted); letter-spacing: 0.2em; font-size: 11px; }
+.nav { display: flex; gap: 4px; }
+.nav a { color: var(--ink-2); padding: 6px 12px; border-radius: 999px; font-size: 14px; transition: background var(--t-fast), color var(--t-fast); }
+.nav a:hover { color: var(--ink); background: rgba(255, 255, 255, 0.06); }
+.nav a[aria-current='page'] { color: var(--bg); background: var(--gold); }
+.nav-toggle { display: none; background: none; border: 1px solid var(--line-strong); border-radius: 10px; width: 40px; height: 40px; cursor: pointer; }
+
+@media (max-width: 720px) {
+  .brand small { display: none; }
+  .nav-toggle { display: grid; place-items: center; }
+  .nav {
+    position: absolute; top: var(--header-h); right: var(--gutter); flex-direction: column;
+    background: var(--glass-strong); border: 1px solid var(--line); border-radius: var(--r);
+    padding: 8px; min-width: 160px; backdrop-filter: blur(12px);
+    opacity: 0; pointer-events: none; transform: translateY(-6px); transition: opacity var(--t-fast), transform var(--t-fast);
+  }
+  .nav.open { opacity: 1; pointer-events: auto; transform: none; }
+  .nav a { padding: 10px 14px; }
+}
+
+/* ============ 減少動態 ============ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}

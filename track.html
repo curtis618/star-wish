@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>追蹤衛星｜星願</title>
+  <meta name="description" content="看看你的星願現在飛到哪裡。" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Space+Grotesk:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/track.css" />
+  <script type="importmap">
+    { "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    } }
+  </script>
+</head>
+<body>
+  <div class="stage"><canvas id="scene" aria-label="衛星追蹤 3D 畫面"></canvas></div>
+
+  <div class="loader" id="loader">
+    <div class="loader-inner">正在鎖定衛星訊號…<div class="loader-bar"><i id="loader-bar"></i></div></div>
+  </div>
+
+  <div class="hud track-hud" id="t-hud">
+    <section class="glass hud-card track-card" aria-live="polite">
+      <div class="tc-head">
+        <h1 id="t-name">—</h1>
+        <span class="badge" id="t-status">—</span>
+        <button class="sheet-toggle" id="t-toggle" type="button" aria-expanded="true" aria-controls="t-hud">收合 ▾</button>
+      </div>
+      <div class="num muted" id="t-id"></div>
+      <div class="muted" style="font-size:14px" id="t-meta"></div>
+
+      <div class="countdown-box" id="t-wait" hidden>
+        <div class="hud-label">距離發射</div>
+        <div class="hud-big" id="t-cd">--:--</div>
+        <div class="muted" style="font-size:13px">從國立中央大學（桃園．中壢）升空，倒數 10 秒自動播放發射畫面</div>
+      </div>
+
+      <dl class="tele" id="t-tele" hidden>
+        <div><dt>高度</dt><dd class="num" id="t-alt">—</dd></div>
+        <div><dt>速度</dt><dd class="num" id="t-v">—</dd></div>
+        <div><dt>位置</dt><dd class="num" id="t-ll">—</dd></div>
+        <div><dt>正在飛越</dt><dd id="t-region">—</dd></div>
+        <div><dt>已繞地球</dt><dd class="num" id="t-orbits">—</dd></div>
+        <div><dt>軌道週期</dt><dd class="num" id="t-period">—</dd></div>
+      </dl>
+    </section>
+
+    <section class="glass hud-card payload-card">
+      <div class="hud-label">艙內星願</div>
+      <div class="payload-list" id="t-payload"></div>
+      <div class="muted" style="font-size:13px" id="t-others"></div>
+      <div class="hud-actions">
+        <a class="btn btn-sm" id="t-add" href="launch.html">＋ 放入新的星願</a>
+        <a class="btn btn-sm" href="my-wishes.html">我的星願</a>
+      </div>
+    </section>
+  </div>
+
+  <div class="hud view-switch glass" role="group" aria-label="視角">
+    <button class="btn btn-sm" data-mode="follow" aria-pressed="true">跟隨衛星</button>
+    <button class="btn btn-sm" data-mode="global" aria-pressed="false">全球視角</button>
+    <button class="btn btn-sm" id="t-replay" disabled title="衛星發射後才能重播">▶ 重播發射</button>
+  </div>
+
+  <script type="module" src="js/pages/track.js"></script>
+</body>
+</html>
